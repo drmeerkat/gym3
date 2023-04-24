@@ -52,8 +52,10 @@ class Interactive:
         width: int = 768,
         height: int = 768,
         tps: int = 15,
+        env_name: str = None,
     ) -> None:
         super().__init__()
+        self._env_name = env_name
         self._ob_key = ob_key
         self._info_key = info_key
         assert env.num == 1, "interactive only supports environments with num=1"
@@ -127,6 +129,8 @@ class Interactive:
         """
         info_rows = []
         for k, v in sorted(self._last_info.items()):
+            if self._env_name is not None and 'chaser' not in self._env_name and k == 'can_eat':
+                continue
             info_rows.append(f"{k}: {v}")
         return "\n".join(info_rows)
 
