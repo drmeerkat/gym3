@@ -26,7 +26,7 @@ from gym3.types import (
 
 
 def _space2vt(space: "gym.spaces.Space"):
-    from gym import spaces
+    from gymnasium import spaces
 
     if isinstance(space, spaces.Box):
         if space.dtype.name in INTEGER_DTYPE_NAMES:
@@ -72,7 +72,7 @@ def _space2vt(space: "gym.spaces.Space"):
 
 
 def _vt2space(vt: ValType):
-    from gym import spaces
+    from gymnasium import spaces
 
     def tt2space(tt: TensorType):
         if isinstance(tt.eltype, Discrete):
