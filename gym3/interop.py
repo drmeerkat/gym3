@@ -198,7 +198,7 @@ class FromBaselinesVecEnv(Env):
         super().__init__(
             ob_space=_space2vt(bv_env.observation_space),
             ac_space=_space2vt(bv_env.action_space),
-            num=bv_env.num_envs,
+            num=bv_env.unwrapped.num_envs,
         )
         self.observe_tuple = None
         self.bv_env = bv_env
